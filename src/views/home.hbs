@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/static/css/formSingleFile.css">
+
+<form class="single-file-form" action="/home" method="post" enctype="multipart/form-data">
+    <label class="form-item file" for="form-descriptor-file">
+        <p>Choose form descriptor file (.json extension)</p>
+        <input type="file" id="form-descriptor-file" name="formDescriptorFile" accept=".json" required>
+    </label>
+    <button type="submit">load file</button>
+</form>

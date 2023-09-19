@@ -1,0 +1,25 @@
+EXECUTE COMMAND: sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt
+
+EXAMPLE:
+
+const fs = require('node:fs');
+const https = require('node:https');
+const express = require('express');
+
+const options = {
+  key: fs.readFileSync('./selfsigned.key'),
+  cert: fs.readFileSync('./selfsigned.crt'),
+};
+
+https.createServer(options, (req, res) => {
+  res.writeHead(200);
+  res.end('hello world');
+}).listen(8000); 
+
+OR:
+
+const app = express();
+const server = https.createServer(options, app);
+server.listen(8443, 'localhost', () => {
+    console.log(`https://localhost:8443/`);
+});

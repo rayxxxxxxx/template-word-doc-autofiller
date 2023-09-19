@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/static/css/form.css">
+<link rel="stylesheet" href="/static/css/formSingleFile.css">
+
+<form id="form-load-template" class="single-file-form horizontal" action="/generator/loadTemplate" method="post" enctype="multipart/form-data">
+    <label class="form-item file horizontal" for="template-word-doc">
+        <p>Choose template word document</p>
+        <input type="file" id="template-word-doc" name="templateWordDoc" accept=".doc, .docx" required>
+    </label>
+    <button type="submit">load file</button>
+</form>
+
+{{#with formDescriptor}}
+    <form id="generator-form" class="form" action="/generator/render" method="post">
+        <h1>{{name}}</h1>
+        <div class="form-block">
+            {{#each fields}}
+                <label class="form-item" for="{{toIdAttrCase this.label}}">
+                    <p>{{this.label}}</p>
+                    <input type="{{this.type}}" name="{{toNameAttrCase this.label}}" id="{{toIdAttrCase this.label}}" {{#if
+                        this.required}}required{{/if}}>
+                </label>
+            {{/each}}
+        </div>
+
+        <label class="form-item" for="save-file-as">
+            <p>Save file as</p>
+            <input type="text" name="fileSaveName" id="save-file-as" value="">
+        </label>
+
+        <div class="form-block buttons">
+            <button type="reset">clear form</button>
+            <button type="submit">download document</button>
+        </div>
+    </form>
+{{/with}}
+
+<script src="/static/js/utils/fetchUtils.js"></script>
+<script src="/static/js/generator/generator.js"></script>

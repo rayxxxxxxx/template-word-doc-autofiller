@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/static/css/form.css">
+<link rel="stylesheet" href="/static/css/formDescriptor.css">
+
+<form class="form" id="main-form" action="" method="get">
+    <label class="form-item horizontal" for="form-name">
+        <p>Form name</p>
+        <input type="text" id="form-name" name="formName" required>
+    </label>
+
+    <div class="form-block horizontal" id="input-types-block">
+        <label class="form-item horizontal radio" for="input-type-text">
+            <p>Text</p>
+            <input type="radio" id="input-type-text" name="type" value="text" required checked>
+        </label>
+
+        <label class="form-item horizontal radio" for="input-type-number">
+            <p>Number</p>
+            <input type="radio" id="input-type-number" name="type" value="number" required>
+        </label>
+
+        <label class="form-item horizontal radio" for="input-type-date">
+            <p>Date</p>
+            <input type="radio" id="input-type-date" name="type" value="date" required>
+        </label>
+    </div>
+
+    <div class="form-block horizontal">
+        <label class="form-item horizontal" for="input-label">
+            <p>Label</p>
+            <input type="text" id="input-label" name="label" required>
+        </label>
+
+        <label class="form-item horizontal checkbox" for="required-checkbox">
+            <p>Required</p>
+            <input type="checkbox" id="required-checkbox" name="required" checked>
+        </label>
+    </div>
+
+    <div class="form-block buttons">
+        <button type="reset">clear form</button>
+        <button type="submit">add field</button>
+        <button type="button" onclick="downloadAsJSON()">download as JSON file</button>
+    </div>
+</form>
+
+<div id="form-descriptor"></div>
+
+<script>
+    const HOST = "{{ host }}";
+    const PORT = {{ port }};
+    const ORIGIN = "{{ origin }}";
+</script>
+
+<script src="/static/js/utils/stringUtils.js"></script>
+<script src="/static/js/utils/fetchUtils.js"></script>
+
+<script src="/static/js/creator/htmlGenerator.js"></script>
+<script src="/static/js/creator/formDescriptor.js"></script>
+<script src="/static/js/creator/creator.js"></script>

@@ -1,0 +1,7 @@
+/node_modules
+/certs/*.crt
+/certs/*.key
+/data/**/*.json
+/data/**/*.doc
+/data/**/*.docx
+package-lock.json

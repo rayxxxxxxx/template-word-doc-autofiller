@@ -1,0 +1,64 @@
+.single-file-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+
+    padding: 1em;
+
+    outline: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.single-file-form.horizontal {
+    flex-direction: row;
+}
+
+.form-item.file {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.form-item.file>p {
+    min-width: fit-content;
+    text-align: center;
+
+    color: grey;
+}
+
+.form-item.file>input {
+    width: 20em;
+    height: 20em;
+
+    background-color: whitesmoke;
+
+    border: 2px dashed grey;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.form-item.file.horizontal {
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+
+.form-item.file.horizontal>input {
+    width: fit-content;
+    height: fit-content;
+
+    width: fit-content;
+
+    border: none;
+
+    background-color: whitesmoke;
+
+    cursor: pointer;
+}
+
+.form-item.file>input:hover {
+    background-color: ghostwhite;
+}
