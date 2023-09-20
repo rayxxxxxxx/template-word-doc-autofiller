@@ -1,5 +1,6 @@
 const form = document.getElementById('main-form');
 
+// let fieldDescriptorUUID = 0;
 let formDescriptor = new FormDescriptor();
 
 function initListeners() {
@@ -17,6 +18,8 @@ function submitHandler(event) {
     let fieldDescriptor = FieldDescriptor.fromFormData(formData);
     formDescriptor.addFieldDescriptor(uuid, fieldDescriptor);
     addFieldDescriptorElement(uuid, fieldDescriptor, formDescriptor);
+
+    // fieldDescriptorUUID += 1;
 }
 
 async function downloadAsJSON() {
@@ -28,8 +31,6 @@ async function downloadAsJSON() {
     let formDescriptorBLOB = new Blob([JSON.stringify(formDescriptor.asJSON())], {
         'type': 'application/json'
     });
-
-    // window.location = URL.createObjectURL(formDescriptorBLOB);
 
     let link = document.createElement('a');
     link.setAttribute('href', URL.createObjectURL(formDescriptorBLOB));

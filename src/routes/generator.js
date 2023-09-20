@@ -55,9 +55,10 @@ generator.post('/render', async (req, res, next) => {
 
     let date = new Date(Date.now());
     let fileNamePrefix = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
-    let fileSaveName = req.body.fileSaveName ? req.body.fileSaveName + '.docx' : fileNamePrefix + "_" + req.file.filename;
+    let fileSaveName = req.body.fileSaveName ? req.body.fileSaveName.replace(' ', '_') + '.docx' : fileNamePrefix + "_" + req.session['templateFilePath'].split('/').at(-1).replace(' ', '_');
 
-    let fileSavePath = path.resolve('data', 'downloads', fileSaveName);
+    let fileSavePath = path.resolve('data', 'downloads', Buffer.from(fileSaveName, 'utf-8').toString()).replace(' ', '_');
+    console.log(fileSavePath);
 
     fs.writeFile(fileSavePath, fileBuffer, (err) => {
         if (err) {
