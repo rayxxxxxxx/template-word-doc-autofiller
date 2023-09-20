@@ -1,0 +1,14 @@
+.error-message {
+    padding: 1em;
+    margin: 3em 0em;
+
+    max-width: 60%;
+    height: fit-content;
+
+    text-align: center;
+    word-break: break-all;
+
+    background-color: whitesmoke;
+
+    border-radius: 10px;
+}

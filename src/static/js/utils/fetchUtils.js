@@ -11,13 +11,13 @@ function buildURL(host, port, path, params = undefined) {
 }
 
 async function fetchGetText(url) {
-    const res = await fetch(url, {
+    let response = await fetch(url, {
         'method': 'GET',
         'headers': {
             'Content-type': 'text',
         }
     });
-    return await res.text();
+    return await response;
 }
 
 async function fetchGetJSON(url) {
@@ -27,7 +27,7 @@ async function fetchGetJSON(url) {
             'Content-type': 'application/json',
         }
     });
-    return await response.json();
+    return await response;
 }
 
 async function fetchPostJSON(url, body) {

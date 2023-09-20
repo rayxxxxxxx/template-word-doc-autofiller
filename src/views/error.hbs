@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/static/css/error.css">
+
+<h1>Some error occured 😰</h1>
+
+{{#if status}}
+    <h2>(status: {{status}})</h2>
+{{/if}}
+
+<p class="error-message">{{message}}</p>
+
+<a href="/home">
+    back to home
+</a>
