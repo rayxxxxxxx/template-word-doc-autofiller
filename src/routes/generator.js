@@ -58,7 +58,6 @@ generator.post('/render', async (req, res, next) => {
     let fileSaveName = req.body.fileSaveName ? req.body.fileSaveName.replace(' ', '_') + '.docx' : fileNamePrefix + "_" + req.session['templateFilePath'].split('/').at(-1).replace(' ', '_');
 
     let fileSavePath = path.resolve('data', 'downloads', Buffer.from(fileSaveName, 'utf-8').toString()).replace(' ', '_');
-    console.log(fileSavePath);
 
     fs.writeFile(fileSavePath, fileBuffer, (err) => {
         if (err) {

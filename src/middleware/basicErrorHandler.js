@@ -6,13 +6,13 @@ function basicErrorHandler(err, req, res, next) {
     };
 
     if (err instanceof Error) {
-        console.log(err);
+        // console.log(err);
         context['message'] = err.message;
         res.status(500).render('error', context);
         return;
     }
     else if (err instanceof APIError) {
-        console.log(err.message);
+        // console.log(err.message);
         context['message'] = err.message;
         context['status'] = err.status;
         res.status(err.status).render('error', context);

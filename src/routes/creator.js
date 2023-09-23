@@ -5,8 +5,7 @@ const creator = express.Router();
 creator.get('/', (req, res) => {
     let context = {
         'host': process.env['HOST'],
-        'port': process.env['PORT'],
-        'origin': process.env['ORIGIN'],
+        'port': process.env['PORT']
     };
     res.render('creator', context);
 });

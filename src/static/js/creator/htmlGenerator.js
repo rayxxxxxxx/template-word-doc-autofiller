@@ -1,39 +1,37 @@
 function addFieldDescriptorElement(elementId, fieldDescriptor, formDescriptor) {
-    let descriptorElement = document.createElement('div');
-    let descriptorAttributesElement = document.createElement('div');
-    let descriptorLabel = document.createElement('p');
-    let descriptorType = document.createElement('p');
-    let descriptorRequired = document.createElement('p');
-    let removeDescriptorButton = document.createElement('button');
+    let root = document.createElement('div');
+    let attrsElem = document.createElement('div');
+    let labelElem = document.createElement('p');
+    let typeElem = document.createElement('p');
+    let requiredElem = document.createElement('p');
+    let rmButton = document.createElement('button');
 
-    descriptorElement.appendChild(descriptorAttributesElement);
-    descriptorElement.appendChild(removeDescriptorButton);
-    descriptorAttributesElement.appendChild(descriptorLabel);
-    descriptorAttributesElement.appendChild(descriptorType);
-    descriptorAttributesElement.appendChild(descriptorRequired);
+    root.appendChild(attrsElem);
+    root.appendChild(rmButton);
+    attrsElem.appendChild(labelElem);
+    attrsElem.appendChild(typeElem);
+    attrsElem.appendChild(requiredElem);
 
-    descriptorElement.setAttribute('class', 'field-descriptor');
-    descriptorElement.setAttribute('id', elementId);
+    root.setAttribute('class', 'field-descriptor');
+    root.setAttribute('id', elementId);
 
-    descriptorAttributesElement.setAttribute('class', 'descriptor-attributes');
+    attrsElem.setAttribute('class', 'descriptor-attributes');
 
-    descriptorLabel.setAttribute('class', 'descriptor-label');
-    descriptorLabel.innerHTML = 'name: ' + fieldDescriptor.label;
+    labelElem.setAttribute('class', 'descriptor-label');
+    labelElem.innerHTML = 'name: ' + fieldDescriptor.label;
 
-    descriptorType.setAttribute('class', 'descriptor-type');
-    descriptorType.innerHTML = 'type: ' + fieldDescriptor.type;
+    typeElem.setAttribute('class', 'descriptor-type');
+    typeElem.innerHTML = 'type: ' + fieldDescriptor.type;
 
-    descriptorRequired.setAttribute('class', 'descriptor-required');
-    descriptorRequired.innerHTML = 'required: ' + fieldDescriptor.required;
+    requiredElem.setAttribute('class', 'descriptor-required');
+    requiredElem.innerHTML = 'required: ' + fieldDescriptor.required;
 
-    removeDescriptorButton.setAttribute('class', 'descriptor-remove-button');
-    removeDescriptorButton.innerText = 'remove';
-    removeDescriptorButton.onclick = removeDescriptorHandler.bind(this, elementId, formDescriptor);
+    rmButton.setAttribute('class', 'descriptor-remove-button');
+    rmButton.innerText = 'remove';
+    rmButton.onclick = () => {
+        formDescriptor.removeFieldDescriptor(descriptorId);
+        document.getElementById(descriptorId).remove();
+    };
 
-    document.getElementById('form-descriptor').appendChild(descriptorElement);
-}
-
-function removeDescriptorHandler(descriptorId, formDescriptor) {
-    delete formDescriptor.removeFieldDescriptor(descriptorId);
-    document.getElementById(descriptorId).remove();
+    document.getElementById('form-descriptor').appendChild(root);
 }

@@ -1,4 +1,3 @@
-
 function buildURL(host, port, path, params = undefined) {
     let origin = `https://${host}:${port}`;
     let paramsList = [];

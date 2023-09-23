@@ -10,7 +10,7 @@ async function loadTemplateHandler(event) {
 
     let formData = new FormData(loadTemplateForm);
 
-    let url = buildURL('localhost', 9443, '/generator/loadTemplate');
+    let url = buildURL('localhost', 9999, '/generator/loadTemplate');
     let response = await fetchPostFile(url, 'templateWordDoc', formData.get('templateWordDoc'));
 }
 
@@ -19,7 +19,7 @@ async function renderHandlder(event) {
 
     let formData = new FormData(generatorForm);
 
-    let url = buildURL('localhost', 9443, '/generator/render');
+    let url = buildURL('localhost', 9999, '/generator/render');
     let response = await fetchPostJSON(url, Object.fromEntries(formData.entries()));
 
     if (response.status == 200) {
